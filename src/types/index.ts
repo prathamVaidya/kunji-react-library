@@ -1,3 +1,6 @@
+import AuthAxiosFactory from "../AuthAxiosFactory";
+import ApiFactory from "../apis/ApiFactory";
+
 export interface AuthUser {
     _id: string;
     fullName: string;
@@ -52,4 +55,21 @@ export enum LoginPageQueryParams {
   IS_SSO = 'sso',
   APP_ID = 'app',
   AUTH_CODE = 'code',
+}
+
+export interface AuthStateI {
+  user: AuthUser | null;
+}
+
+export interface AuthContextValueI {
+  user: AuthUser | null;
+  appId: string;
+  authorizationServerUrl: string;
+  loginPageUrl: string;
+  initiateAuthentication: () => void
+  logout: (config ?: {reload?: boolean}) => void,
+  getAccessToken: () => string | null,
+  getRefreshToken: () => string | null,
+  API: InstanceType<typeof ApiFactory>,
+  oAxios: ReturnType<typeof AuthAxiosFactory>,
 }

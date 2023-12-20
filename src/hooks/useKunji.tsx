@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { AuthUser, KunjiConfigurationProps, LoginPageQueryParams } from '../types';
+import { AuthContextValueI, AuthStateI, AuthUser, KunjiConfigurationProps, LoginPageQueryParams } from '../types';
 import TokenStorage from '../TokenStorage';
 import ApiFactory from '../apis/ApiFactory';
 import AxiosFactory from '../AxiosFactory';
@@ -8,23 +8,6 @@ import AuthAxiosFactory from '../AuthAxiosFactory';
 import { DEFAULT_AUTHORIZATION_SERVER_URL, DEFAULT_LOGIN_PAGE_URL } from '../config';
 
 const AuthContext = createContext({});
-
-interface AuthContextValueI {
-  user: AuthUser | null;
-  appId: string;
-  authorizationServerUrl: string;
-  loginPageUrl: string;
-  initiateAuthentication: () => void
-  logout: (config ?: {reload?: boolean}) => void,
-  getAccessToken: () => string | null,
-  getRefreshToken: () => string | null,
-  API: InstanceType<typeof ApiFactory>,
-  oAxios: ReturnType<typeof AuthAxiosFactory>,
-}
-
-interface AuthStateI {
-    user: AuthUser | null;
-  }
 
 const initiateAuthentication = (appId: string, loginPageUrl: string) => {
         const url = new URL(loginPageUrl);
