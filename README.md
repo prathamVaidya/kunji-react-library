@@ -4,7 +4,7 @@
 
 Kunji React Library handles kunji authentication and state automatically to simplify authentication and user management in your applications. The library provides two main components: `KunjiProvider` and `useKunji` hook, making it easy to integrate authentication features into your React projects.
 
-## How to register App (Create AppID)
+## How to register App
 
 This section will be updated after official production release.
 
@@ -79,6 +79,9 @@ const MyComponent = () => {
   </div>);
 };
 ```
+
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/p/devbox/hp3887?embed=1)
+
 
 ## Configuration
 
