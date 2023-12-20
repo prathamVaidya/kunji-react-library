@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/prathamVaidya"
   },
-  "version": "1.0.5",
+  "version": "1.0.0",
   "description": "Setup Authentication and Authorization in your React application in seconds! Suitable for MVP, side projects or hackathon apps.",
   "main": "dist/cjs/bundle.js",
   "module": "dist/esm/bundle.js",
