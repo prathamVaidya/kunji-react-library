@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/prathamVaidya"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Setup Authentication and Authorization in your React application in seconds! Suitable for MVP, side projects or hackathon apps.",
   "main": "dist/cjs/bundle.js",
   "module": "dist/esm/bundle.js",
@@ -13,7 +13,8 @@
     "src"
   ],
   "scripts": {
-    "build": "rimraf dist && rollup -c && npm run pack",
+    "build": "rimraf dist && rollup -c",
+    "publish": "npm run build && npm publish --access public",
     "pack": "npm pack --pack-destination builds/",
     "dev": "rollup -c -w",
     "test": "jest",
