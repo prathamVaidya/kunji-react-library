@@ -1,8 +1,5 @@
 {
-  "name": "@prathamVaidya/kunji-react",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/prathamVaidya"
-  },
+  "name": "kunji-react",
   "version": "1.0.1",
   "description": "Setup Authentication and Authorization in your React application in seconds! Suitable for MVP, side projects or hackathon apps.",
   "main": "dist/cjs/bundle.js",
