@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { AuthContextValueI, AuthStateI, AuthUser, KunjiConfigurationProps, LoginPageQueryParams } from '../types';
+import { AuthContextValueI, AuthStateI, KunjiConfigurationProps, LoginPageQueryParams } from '../types';
 import TokenStorage from '../TokenStorage';
 import ApiFactory from '../apis/ApiFactory';
 import AxiosFactory from '../AxiosFactory';
