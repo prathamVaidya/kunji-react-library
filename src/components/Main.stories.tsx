@@ -5,7 +5,7 @@ import MainComponent from './Main';
 export default {
   title: 'MainComponent',
   component: MainComponent,
-  decorators: [(Story : React.FC) => <KunjiProvider config={{appId: "superbook"}}>{
+  decorators: [(Story : React.FC) => <KunjiProvider config={{appId: "test"}}>{
     <Story/>
   }</KunjiProvider>],
 };
