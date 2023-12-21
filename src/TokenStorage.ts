@@ -1,11 +1,11 @@
 import { AuthUser } from './types';
 
 class TokenStorage {
-  private static readonly REFRESH_TOKEN = '@refresh_token';
-  private static readonly REFRESH_TOKEN_EXPIRY = '@refresh_token_expiry';
-  private static readonly ACCESS_TOKEN = '@access_token';
-  private static readonly ACCESS_TOKEN_EXPIRY = '@access_token_expiry';
-  private static readonly TOKEN_USER = '@user';
+  private static readonly REFRESH_TOKEN = '@kunji_refresh_token';
+  private static readonly REFRESH_TOKEN_EXPIRY = '@kunji_refresh_token_expiry';
+  private static readonly ACCESS_TOKEN = '@kunji_access_token';
+  private static readonly ACCESS_TOKEN_EXPIRY = '@kunji_access_token_expiry';
+  private static readonly TOKEN_USER = '@kunji_user';
 
   static setAccessToken(token: string, expiry: string): void {
     localStorage.setItem(TokenStorage.ACCESS_TOKEN, token);
