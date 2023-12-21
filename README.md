@@ -1,8 +1,12 @@
 # Kunji React Library
 
+Setup Authentication and Authorization in your React application in seconds without any verification! Suitable for MVP, side projects or hackathon apps.
+
 ## Introduction
 
 Kunji React Library handles kunji authentication and state automatically to simplify authentication and user management in your applications. The library provides two main components: `KunjiProvider` and `useKunji` hook, making it easy to integrate authentication features into your React projects.
+
+> Also check the backend nodejs library for server: [kunji-node](https://www.npmjs.com/package/kunji-node)
 
 ## How to register App
 
