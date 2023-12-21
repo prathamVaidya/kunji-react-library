@@ -1,7 +1,11 @@
 {
   "name": "kunji-react",
   "version": "1.0.1",
-  "description": "Setup Authentication and Authorization in your React application in seconds! Suitable for MVP, side projects or hackathon apps.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prathamvaidya/kunji-react-library"
+  },
+  "description": "kunji-react manages authentication flow and authentication state internally in react",
   "main": "dist/cjs/bundle.js",
   "module": "dist/esm/bundle.js",
   "types": "dist/index.d.ts",
@@ -29,7 +33,10 @@
     "login",
     "register"
   ],
-  "author": "Pratham Vaidya",
+  "author": {
+    "name": "Pratham Vaidya",
+    "url": "https://prathamvaidya.in"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.21.4",
