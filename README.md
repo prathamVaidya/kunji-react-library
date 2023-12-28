@@ -9,8 +9,13 @@ Kunji React Library handles kunji authentication and state automatically to simp
 > Also check the backend nodejs library for server: [kunji-node](https://www.npmjs.com/package/kunji-node)
 
 ## How to register App
+Checkout [Kunji Official Site](https://kunji.prathamvaidya.in) for more information.
 
-This section will be updated after official production release.
+1. Login to [Kunji Dashboard](https://kunji.prathamvaidya.in/dashboard).
+2. Go to Developer Mode.
+3. Register your app by filling only 3 required fields.
+4. You will see your App ID and Public Key.
+
 
 ## Installation
 
@@ -28,7 +33,7 @@ yarn add kunji-react
 
 The basic usage of this application is demonstrated in the following example. In case of advance usage check all the exposed APIs below.
 
-### KunjiProvider
+### `KunjiProvider`
 
 Wrap your main application component with `KunjiProvider` and pass the necessary configuration as props. This makes authentication context available to the rest of your application.
 
@@ -48,7 +53,7 @@ const App = () => {
 };
 ```
 
-### useKunji Hook
+### `useKunji` Hook
 
 Use the `useKunji` hook in any component to access authentication-related data and functions.
 
