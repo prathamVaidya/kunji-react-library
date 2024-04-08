@@ -117,10 +117,10 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
         if(authCode){
             // Delete the AuthCode query param from URL (FOR SECURITY REASONS)
             url.searchParams.delete(LoginPageQueryParams.AUTH_CODE);
-            window.history.replaceState({}, '', url.toString())
+            window.history.replaceState({}, '', url.toString());
 
             // Auth Code Found, Try login using auth code
-            loginWithAuthCodeService(authCode)
+            loginWithAuthCodeService(authCode);
         }
         const user = TokenStorage.getUser();
         if (user) {

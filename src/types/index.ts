@@ -59,10 +59,12 @@ export enum LoginPageQueryParams {
 
 export interface AuthStateI {
   user: AuthUser | null;
+  loading: boolean;
 }
 
 export interface AuthContextValueI {
   user: AuthUser | null;
+  loading: boolean;
   appId: string;
   authorizationServerUrl: string;
   loginPageUrl: string;
