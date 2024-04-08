@@ -29,7 +29,8 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
 
   const [authState, setAuthState] = useState<AuthStateI>({ 
     user: null,
-});
+    loading: false,
+    });
 
     //  this client is only internal use
     const client = AxiosFactory(axios, {BACKEND_URL: authorizationServerUrl, APP_ID: props.config.appId})
@@ -37,9 +38,9 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
 
     const logout = ({reload} : {reload?: boolean} = {reload: false}) => {
         setAuthState({...authState, user: null})
-        TokenStorage.deleteAll()
+        TokenStorage.deleteAll();
         if(reload){
-            window.location.reload()
+            window.location.reload();
         }
     }
 
@@ -52,7 +53,7 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
                 return true;
             } else {
                 // Refresh Token expired
-                logout()
+                logout();
             }
         }
         return false;
@@ -93,16 +94,18 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
     };
 
     const loginWithAuthCodeService = async (authCode: string) : Promise<boolean> => {
+            setAuthState({...authState, loading: true});
             const response = await ApiService.loginWithAuthCode(authCode);
             if(response){
                 TokenStorage.setAccessToken(response.access.token, response.access.expires);
                 TokenStorage.setRefreshToken(response.refresh.token, response.refresh.expires);
                 TokenStorage.setUser(response.user);
-                setAuthState({...authState, user: response.user})
+                setAuthState({...authState, user: response.user, loading: false});
                 return true;
             }
             else{
                 // unable to login
+                setAuthState({...authState, loading: false});
                 return false;
             }
     }
@@ -121,15 +124,16 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
         }
         const user = TokenStorage.getUser();
         if (user) {
-        setAuthState((prevState) => {
-            return {...prevState, user}
-        });
-        refreshTokenChecker();
+            setAuthState((prevState) => {
+                return {...prevState, user}
+            });
+            refreshTokenChecker();
         }
     }, []);
 
     const finalAuthContextValue : AuthContextValueI = {
         user: authState.user,
+        loading: authState.loading,
         appId,
         authorizationServerUrl,
         loginPageUrl,
