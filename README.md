@@ -2,6 +2,8 @@
 
 Setup Authentication and Authorization in your React application in seconds without any verification! Suitable for MVP, side projects or hackathon apps.
 
+[![kunji-react](https://nodei.co/npm/kunji-react.png?downloads=true)](https://www.npmjs.com/package/kunji-react)  
+
 ## Introduction
 
 Kunji React Library handles kunji authentication and state automatically to simplify authentication and user management in your applications. The library provides two main components: `KunjiProvider` and `useKunji` hook, making it easy to integrate authentication features into your React projects.
@@ -63,6 +65,7 @@ import { useKunji } from 'kunji-react';
 const MyComponent = () => {
   const {
     user,
+    loading,
     initiateAuthentication,
     logout,
     oAxios,
@@ -82,7 +85,7 @@ const MyComponent = () => {
          <button onClick={() => logout()}> Logout </button>
         </div>
         :
-        <div> <button onClick={() => initiateAuthentication()}> Login </button> </div>
+        loading ? <div>Authenticating...</div> : <div> <button onClick={() => initiateAuthentication()}> Login </button> </div>
 
     }
   </div>);
@@ -109,6 +112,7 @@ The `useKunji` hook can be used to access all the exposed APIs and state variabl
 | Field                    | Type                                         | Description                                                                                                                                                         |
 |--------------------------|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | user                     | `AuthUser \| null`                             | The authenticated user object or null if not authenticated.                                                                                                      |
+| loading                  | `boolean`                                      | Authentication state when user is authenticating. Default is false.                                                                                               |
 | appId                    | `string`                                       | Your Application ID.                                                                                                                              |
 | authorizationServerUrl   | `string`                                       | The URL of Kunji authorization server.                                                                                                                              |
 | loginPageUrl             | `string`                                       | The URL of Kunji login page.                                                                                                                                        |
@@ -124,7 +128,7 @@ The `useKunji` hook can be used to access all the exposed APIs and state variabl
 
 ## User Object
 
-The `user` object, obtained through the `useKunji` hook, represents the authenticated user. Here is a breakdown of its fields:
+The `user` object, obtained through the `useKunji` hook, represents the authenticated user. Its type is `KunjiUserI`. Here is a breakdown of its fields:
 
 | Field              | Type                                      | Description                                       |
 |--------------------|-------------------------------------------|---------------------------------------------------|
@@ -146,4 +150,4 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as needed. debugger eval code:5:9
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as needed.
