@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useKunji } from "../hooks/useKunji";
+import "./style.css";
+
 // Todo: Flow to initiate Authentication, handle not logged in state
 function Main() : JSX.Element {
     const {user, loading, initiateAuthentication, logout, API, oAxios } = useKunji()
@@ -22,17 +24,24 @@ function Main() : JSX.Element {
             
     }, [user, loading])
     return (
-        <div>
-            {loading && "Authenticating..."}
+        <div style={{width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: (loading ? '#f4d03f' : user ? '#229954' : '#e74c3c')}}>
             {
-                user ? 
-                <div>Hello { user.fullName }
-                    <button onClick={() => logout()}>Logout</button>    
-                </div> 
+                loading ? 
+                    <div>
+                        <h1>{loading && "Authenticating..."}</h1>
+                    </div>
                 : 
-                <div> 
-                    <button onClick={() => initiateAuthentication()}>Login Button</button>    
-                </div>
+                (user ? 
+                    <div>
+                        <h2>Hello { user.fullName }!</h2>
+                        <button onClick={() => logout()}>Logout</button>    
+                    </div>
+                     : 
+                    <div> 
+                        <h2>Not LoggedIn</h2>
+                        <button onClick={() => initiateAuthentication()}>Login Button</button>    
+                    </div>
+                     )
             }
         </div>
     );
