@@ -27,9 +27,9 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
     const loginPageUrl = props.config.loginPageUrl ?? DEFAULT_LOGIN_PAGE_URL;
     const authorizationServerUrl = props.config.authorizationServerUrl ?? DEFAULT_AUTHORIZATION_SERVER_URL;
 
-  const [authState, setAuthState] = useState<AuthStateI>({ 
-    user: null,
-    loading: false,
+    const [authState, setAuthState] = useState<AuthStateI>({ 
+            user: null,
+            loading: true,
     });
 
     //  this client is only internal use
@@ -37,7 +37,7 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
     const ApiService = new ApiFactory(appId, client)
 
     const logout = ({reload} : {reload?: boolean} = {reload: false}) => {
-        setAuthState({...authState, user: null})
+        setAuthState({...authState, user: null, loading: false})
         TokenStorage.deleteAll();
         if(reload){
             window.location.reload();
@@ -122,12 +122,19 @@ export function KunjiProvider(props: KunjiConfigurationProps) {
             // Auth Code Found, Try login using auth code
             loginWithAuthCodeService(authCode);
         }
+
         const user = TokenStorage.getUser();
         if (user) {
             setAuthState((prevState) => {
-                return {...prevState, user}
+                return {...prevState, user, loading: false}
             });
             refreshTokenChecker();
+        }
+        
+        if(!user && !authCode){
+            setAuthState((prevState) => {
+                return {...prevState, loading: false}
+            });
         }
     }, []);
 
